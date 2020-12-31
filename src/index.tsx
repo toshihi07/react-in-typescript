@@ -10,3 +10,4 @@ type foo = JSX.IntrinsicAttributes;
 //子コンポーネントであるappコンポーネントにmessageという文字列データを渡した。これによって、appコンポーネントの側からmessageを取り出せるようになった。
 //typescriptでは、データを渡す際に型を指定しないといけない。例外はIntrinsicAttributesでreactに指定されているkeyのみ。追加はできる。
 ReactDOM.render(<App />, document.getElementById('root'));
+
