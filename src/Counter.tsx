@@ -1,5 +1,8 @@
 //componentの実装にはreactをimport
-import React, { useState } from "react";
+import React, { useEffect,useRef, useState } from "react";
+
+const array: Array<number> = [1,2,3]
+const readOnlyArray: ReadonlyArray<number> = [1,2,3]
 
 //React.FCに省略出来る。
 const Counter: React.FC<{}> = () => {
@@ -10,6 +13,7 @@ const Counter: React.FC<{}> = () => {
   //methods
   //countを操作できるのはsetCountのみ
   //下記のはコールバック関数
+  //prevで前回のという意味
   const increment = () => {
     setCount((precCount) => precCount + 1)
   };
@@ -18,14 +22,22 @@ const Counter: React.FC<{}> = () => {
     setCount((precCount) => precCount - 1)
   };
 
+  const renderTimes = useRef(0);
+  //useEffectで登録されている関数は再レンダリングされる度に実行される。
+  useEffect(() =>{renderTimes.current = renderTimes.current + 1})
+  // function useRef<T>(initialValue: T): MutableRefObject<T>;
+
   return (
     <div>
       <div>count: {count}</div>
       <button onClick={increment}>+1</button>
       <button onClick={decrement}>-1</button>
+  <div>This component was re-rendered: {renderTimes.current}</div>
     </div>
   );
 };
 
 export default Counter;
+
+
 
