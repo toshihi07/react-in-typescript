@@ -27,17 +27,28 @@ const Counter: React.FC<{}> = () => {
   useEffect(() =>{renderTimes.current = renderTimes.current + 1})
   // function useRef<T>(initialValue: T): MutableRefObject<T>;
 
+  //nullを代入して初期化。null!をつけることで、null出ないことを明示的に書く。nullになることは今回の場合にはありえないから、typescriptのnonnullasertionをつける。
+  const ref = useRef<HTMLInputElement>(null!)
+
+  const focusInput = () => {
+    const current = ref.current;
+      current.focus();
+  }
+
+
+
   return (
     <div>
       <div>count: {count}</div>
       <button onClick={increment}>+1</button>
       <button onClick={decrement}>-1</button>
   <div>This component was re-rendered: {renderTimes.current}</div>
+  <label htmlFor="text">名前</label>
+  <input type='text' name='txt' placeholder='入力欄' id="text" ref={ref} />
+  <button onClick={focusInput}>フォーカス</button>
     </div>
   );
 };
 
 export default Counter;
-
-
 
