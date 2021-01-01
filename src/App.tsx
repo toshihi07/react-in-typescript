@@ -1,6 +1,6 @@
 import React from 'react';
 //import時には拡張子はいらない。
-import Counter  from './Counter';
+import CounterUseReducer  from './CounterUseReducer';
 
 
 //optiononalnalな引数にしないと、index.tsxxで値を渡さなければエラーになる。
@@ -15,7 +15,7 @@ const App: React.FunctionComponent = ({ }) => {
   //プロパティを取り出すjavascriptの分割代入。
   //何でも受け取れる状態ではtypescriptを導入する意味がない。
   
-  return <div><Counter /></div>
+  return <div><CounterUseReducer /></div>
 };
 
 //外から値が来なかったときにはこの値が採用される。必ずAppProps内にメンバが定義されていなければならない。
